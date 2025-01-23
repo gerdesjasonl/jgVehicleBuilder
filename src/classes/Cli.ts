@@ -189,6 +189,7 @@ class Cli {
           parseInt(answers.year),
           parseInt(answers.weight),
           parseInt(answers.topSpeed),
+          parseInt(answers.towingCapacity),
           []
         );
         this.vehicles.push(truck);
@@ -294,13 +295,13 @@ class Cli {
         // TODO: check if the selected vehicle is the truck
         // TODO: if it is, log that the truck cannot tow itself then perform actions on the truck to allow the user to select another action
         // TODO: if it is not, tow the selected vehicle then perform actions on the truck to allow the user to select another action
-          if (this.vehicles.vehicleType === 'Truck') {
+          if (this.vehicles[i].vehicleType === 'truck') {
             console.log('You cannot tow yourself!');
             this.findVehicleToTow();
           }else{
             this.tow();
-            console.log(`${vehicle.vin} -- ${vehicle.make} ${vehicle.model} has been succesfully towed!`);
-            this.performActions();
+            console.log(`${this.vehicles.vin} -- ${this.vehicles.make} ${this.vehicles.model} has been succesfully towed!`);
+            performActions();
               }
             })
           };
@@ -390,13 +391,13 @@ class Cli {
           }
         } else if (answers.action === 'Tow') {
           for (let i = 0; i < this.vehicles.length; i++) {
-            if (this.vehicles[i] === 'truck') {
-              this.findVehicleToTow();
+            if (this.vehicles.type === 'truck') {
+              this.vehicles[i].findVehicleToTow();
             }
           }
         }else if (answers.action === 'Wheelie') {
           for (let i = 0; i < this.vehicles.length; i++) {
-            if (this.vehicles[i] === 'motorbike') {
+            if (this.vehicles.type === 'motorbike') {
               this.vehicles[i].wheelie();
             }
           }
