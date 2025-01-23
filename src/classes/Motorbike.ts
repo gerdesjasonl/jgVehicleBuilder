@@ -51,6 +51,7 @@ class Motorbike extends Vehicle {
         this.wheels = wheels;
       }
     }
+  // ** MOVED to Cli.ts line 308 by JG **
   // TODO: Implement the wheelie method
   // TODO: The method should log the message "Motorbike [make] [model] is doing a wheelie!"
   // wheelie(motorbike: Motorbike): void {

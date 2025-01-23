@@ -305,7 +305,7 @@ class Cli {
               }
             })
           };
-
+// Brought wheelie from Motorbike.ts line 54
   wheelie(motorbike: Motorbike): void {
   // Check if the vehicle is started
     if (motorbike.started) {
@@ -402,10 +402,11 @@ class Cli {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i] instanceof Truck && this.vehicles[i].vin === this.selectedVehicleVin) {
               this.findVehicleToTow(this.vehicles[i] as Truck)
-            // } else {
-            //   console.log('This vehicle cannot tow another');
-            //   this.performActions();
-            }
+            }else{
+              console.log('This vehicle cannot tow another');
+// I do not know why, but without the return here, the findVehiclesToTow method doesnt fire. 
+              return
+            } 
           }
         }else if (answers.action === 'Wheelie') {
           for (let i = 0; i < this.vehicles.length; i++) {
