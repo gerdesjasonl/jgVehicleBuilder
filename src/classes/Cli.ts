@@ -393,6 +393,9 @@ class Cli {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i] instanceof Truck && this.vehicles[i].vin === this.selectedVehicleVin) {
               this.findVehicleToTow(this.vehicles[i] as Truck)
+            } else {
+              console.log('This vehicle cannot tow another');
+              return
             }
           }
         }else if (answers.action === 'Wheelie') {
