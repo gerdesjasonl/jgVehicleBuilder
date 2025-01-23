@@ -306,6 +306,15 @@ class Cli {
             })
           };
 
+  wheelie(motorbike: Motorbike): void {
+  // Check if the vehicle is started
+    if (motorbike.started) {
+      console.log(`Motorbike ${motorbike.make} ${motorbike.model} is doing a wheelie!`);
+    } else {
+      console.log('Start the Motorbike first');
+    }
+  }
+
   // method to perform actions on a vehicle
   performActions(): void {
     inquirer
@@ -393,15 +402,15 @@ class Cli {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i] instanceof Truck && this.vehicles[i].vin === this.selectedVehicleVin) {
               this.findVehicleToTow(this.vehicles[i] as Truck)
-            } else {
-              console.log('This vehicle cannot tow another');
-              return
+            // } else {
+            //   console.log('This vehicle cannot tow another');
+            //   this.performActions();
             }
           }
         }else if (answers.action === 'Wheelie') {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i] instanceof Motorbike && this.vehicles[i].vin === this.selectedVehicleVin) {
-              // Motorbike.wheelie(this.vehicles[i] as Motorbike);
+              this.wheelie(this.vehicles[i] as Motorbike);
             }
           }
         }
