@@ -276,7 +276,7 @@ class Cli {
 
   // method to find a vehicle to tow
   // TODO: add a parameter to accept a truck object
-  findVehicleToTow(): void {
+  findVehicleToTow(truck: Truck): void {
     inquirer
       .prompt([
         {
@@ -295,13 +295,13 @@ class Cli {
         // TODO: check if the selected vehicle is the truck
         // TODO: if it is, log that the truck cannot tow itself then perform actions on the truck to allow the user to select another action
         // TODO: if it is not, tow the selected vehicle then perform actions on the truck to allow the user to select another action
-          if (this.vehicles[i].vehicleType === 'truck') {
+          if (answers.vehicleToTow === 'Truck') {
             console.log('You cannot tow yourself!');
-            this.findVehicleToTow();
+            this.findVehicleToTow(truck);
           }else{
-            this.tow();
-            console.log(`${this.vehicles.vin} -- ${this.vehicles.make} ${this.vehicles.model} has been succesfully towed!`);
-            performActions();
+            truck.tow(answers.vehicleToTow);
+            console.log(`${answers.vehicleToTow.vin} -- ${answers.vehicleToTow.make} ${answers.vehicleToTow.model} has been succesfully towed!`);
+            this.performActions();
               }
             })
           };
@@ -391,14 +391,14 @@ class Cli {
           }
         } else if (answers.action === 'Tow') {
           for (let i = 0; i < this.vehicles.length; i++) {
-            if (this.vehicles.type === 'truck') {
-              this.vehicles[i].findVehicleToTow();
+            if (this.vehicles[i] instanceof Truck && this.vehicles[i].vin === this.selectedVehicleVin) {
+              this.findVehicleToTow(this.vehicles[i] as Truck)
             }
           }
         }else if (answers.action === 'Wheelie') {
           for (let i = 0; i < this.vehicles.length; i++) {
-            if (this.vehicles.type === 'motorbike') {
-              this.vehicles[i].wheelie();
+            if (this.vehicles[i] instanceof Motorbike && this.vehicles[i].vin === this.selectedVehicleVin) {
+              // Motorbike.wheelie(this.vehicles[i] as Motorbike);
             }
           }
         }
