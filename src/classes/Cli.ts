@@ -233,6 +233,11 @@ class Cli {
           message: 'Enter Top Speed',
         },
         {
+          type: 'confirm',
+          name: 'secondSeat',
+          message: 'Second Seat installed?'
+        },
+        {
           type: 'input',
           name: 'frontWheelDiameter',
           message: 'Enter Front Wheel Diameter',
@@ -266,6 +271,7 @@ class Cli {
           parseInt(answers.year),
           parseInt(answers.weight),
           parseInt(answers.topSpeed),
+          answers.secondSeat,
           []
         );
         this.vehicles.push(motorbike);

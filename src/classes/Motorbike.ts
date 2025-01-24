@@ -14,6 +14,7 @@ class Motorbike extends Vehicle {
     year: number;
     weight: number;
     topSpeed: number;
+    secondSeat: boolean;
     wheels: Wheel[];
 
   // TODO: Create a constructor that accepts the properties of the Motorbike class
@@ -28,6 +29,7 @@ class Motorbike extends Vehicle {
       year: number,
       weight: number,
       topSpeed: number,
+      secondSeat: boolean,
       wheels: Wheel[],
     ) {
       // Call the constructor of the parent class, Vehicle
@@ -41,6 +43,7 @@ class Motorbike extends Vehicle {
       this.year = year;
       this.weight = weight;
       this.topSpeed = topSpeed;
+      this.secondSeat = secondSeat;
   
       // Check if the wheels array has 2 elements
       // If not, create 2 new Wheel objects
@@ -79,6 +82,7 @@ class Motorbike extends Vehicle {
     console.log(`Year: ${this.year}`);
     console.log(`Weight: ${this.weight} lbs`);
     console.log(`Top Speed: ${this.topSpeed} mph`);
+    console.log(`Second Seat: ${this.secondSeat}`)
 
     // Print details of the wheels
     console.log(
