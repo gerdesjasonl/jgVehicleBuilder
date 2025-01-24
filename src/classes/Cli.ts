@@ -410,9 +410,9 @@ class Cli {
             if (this.vehicles[i] instanceof Truck && this.vehicles[i].vin === this.selectedVehicleVin) {
               this.findVehicleToTow(this.vehicles[i] as Truck)
             }else{
-              console.log('This vehicle cannot tow another');
-              this.performActions();
-// I do not know why, but without the return here, the findVehiclesToTow method doesnt fire. 
+              // console.log('This vehicle cannot tow another');
+              // this.performActions();
+// // I do not know why, but without the return here, the findVehiclesToTow method doesnt fire properly for the truck. If any other vehicle tries to tow this exits the CLI.
               return
             } 
           }
@@ -421,9 +421,10 @@ class Cli {
             if (this.vehicles[i] instanceof Motorbike && this.vehicles[i].vin === this.selectedVehicleVin) {
               this.wheelie(this.vehicles[i] as Motorbike);
             }else{
-              console.log('This vehicle cannot do a wheelie');
-              this.performActions();
-              return;
+// // If I uncomment this below, the motobike will not wheelie, every vehicle will log "cannot do a wheelie." Currently if any other vehicle attempts a wheelie this exits the CLI.
+              // console.log('This vehicle cannot do a wheelie');
+              // this.performActions();
+              // return;
             }
           }
         }
