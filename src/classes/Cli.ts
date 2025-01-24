@@ -306,7 +306,8 @@ class Cli {
             this.findVehicleToTow(truck);
           }else{
             truck.tow(answers.vehicleToTow);
-            console.log(`${answers.vehicleToTow.vin} -- ${answers.vehicleToTow.make} ${answers.vehicleToTow.model} has been succesfully towed!`);
+            // console.log(`${answers.vehicleToTow.vin} -- ${answers.vehicleToTow.make} ${answers.vehicleToTow.model} has been succesfully towed!`);
+            // I tried the console.log here to see if it could be fired in multiple place, it is fired first here and overrides the message from truck.ts
             this.performActions();
               }
             })
@@ -410,6 +411,7 @@ class Cli {
               this.findVehicleToTow(this.vehicles[i] as Truck)
             }else{
               console.log('This vehicle cannot tow another');
+              this.performActions();
 // I do not know why, but without the return here, the findVehiclesToTow method doesnt fire. 
               return
             } 
@@ -418,6 +420,10 @@ class Cli {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i] instanceof Motorbike && this.vehicles[i].vin === this.selectedVehicleVin) {
               this.wheelie(this.vehicles[i] as Motorbike);
+            }else{
+              console.log('This vehicle cannot do a wheelie');
+              this.performActions();
+              return;
             }
           }
         }
